@@ -16,8 +16,10 @@ def find_max_matches(compatible: List[List[bool]]):
     cycle3 = "There is no length 3 cycle"
     for i in range(0, x):
         for j in range(0, y):
+            # check who potential starter of the donation
             if i != j and array2[i][j]:
                 for x in range(0, len(array2[j])):
+                    # if there is a 3 cycle donation complete
                     if array2[j][x] and array2[x][i] and i != x:
                         cycle3 = "Length 3 cycle: " + str(i) + "->" + str(j) + " and " + str(j) + "->" + str(x) + " and " + str(x) + "->" + str(i) + "\n"
                         alreadyDonated(array2, i)
@@ -54,8 +56,10 @@ def find_max_matches(compatible: List[List[bool]]):
     cycle3 = "There is no length 3 cycle"
     for i in range(0, x):
         for j in range(0, y):
+            # check who potential starter of the donation
             if i != j and array1[i][j]:
                 for x in range(0, len(array1[j])):
+                    # if there is a 3 cycle donation complete
                     if array1[j][x] and array1[x][i] and i != x:
                         cycle3 = "Length 3 cycle: " + str(i) + "->" + str(j) + " and " + str(j) + "->" + str(x) + " and " + str(x) + "->" + str(i) + "\n"
                         alreadyDonated(array1, i)
@@ -64,6 +68,7 @@ def find_max_matches(compatible: List[List[bool]]):
                         num1 += 6
                         option1 = option1 + cycle3
 
+    # decide which option is better
     if num1 > num2:
         print(option1)
     else:
@@ -74,15 +79,3 @@ def alreadyDonated(compatible: List[List[bool]], donated: int):
     for i in range(0, len(compatible[donated])):
         compatible[donated][i] = False
 
-def main():
-
-    a = [[True, True, False, False],
-         [True, False, True, True],
-         [True, False, True, False],
-         [False, True, False, False],
-         [False, False, False, False]]
-    find_max_matches(a)
-
-
-if __name__ == '__main__':
-    main()
